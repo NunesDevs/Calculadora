@@ -1,0 +1,23 @@
+
+
+# Jarvis safety
+.env
+.env.local
+.env.*.local
+node_modules/
+.next/
+dist/
+build/
+coverage/
+.DS_Store
+*.log
+.vscode/
+.idea/
+__pycache__/
+.venv/
+venv/
+*.pyc
+uploads/
+tmp/
+temp/
+cache/
