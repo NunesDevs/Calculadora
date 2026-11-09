@@ -1,127 +1,120 @@
+@import url('./colors.css');
 
-@import url(./colors.css);
+@font-face{font-family:'DM Sans';
+src:url('../assets/fonts/dm-sans-latin.woff2') format('woff2');
+font-weight:100 900;
+font-display:swap}
 
-body{
-    display: grid;
-    height: 100vh;
-    place-items: center;
-    }
+@font-face{font-family:'Space Grotesk';
+src:url('../assets/fonts/space-grotesk-latin.woff2') format('woff2');
+font-weight:300 700;
+font-display:swap}
 
-    .container {
-    border-radius: 9px;
-    background: var(--branco);
-    box-shadow:  7px 7px 42px var(--branco1),
-                -7px -7px 42px var(--branco);
-    width: 300px;
-    height: 410px;
-    padding: 10px;
-    
-    }
-    
-    .keys {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
-        padding: 10px;
-        margin:auto;
-    }
-    
-    .numero {
-        height: 60px;
-        padding: 5px;
-        background-color: var(--cinza);
-        border-radius: 3px;
-        border: 1px solid var(--preto);
-        background-color: transparent;
-        font-size: 2rem;
-        color: var(--cinza);
-        background-image: linear-gradient(to bottom, transparent, transparent 50%,
-                                         rgba(0,0,0,.04));
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 
-                    inset 0 1px 0 0 rgba(255,255,255,.45), 
-                    inset 0 -1px 0 0 rgba(255,255,255,.15), 
-                    0 1px 0 0 rgba(255,255,255,.15);
-        text-shadow: 0 1px var(--cinza1);
-    
-    }
+*{box-sizing:border-box}
 
-    input,button{
-    outline: none;
-    border: 1px solid transparent;
-    }
+body{margin:0;
+background:var(--bg);
+color:var(--text);
+font:400 16px/26px 'DM Sans',sans-serif}
 
-    .resultado{
-        width: 280px;
-        height: 50px;
-        padding: 5px;
-        background-color: var(--cinza);
-        border-radius: 3px;
-        border: 1px solid var(--cinza1);
-        background-color: transparent;
-        font-size: 2rem;
-        color: var(--cinza);
-        background-image: linear-gradient(to bottom, transparent, transparent 50%,
-                                         rgba(0,0,0,.04));
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 
-                    inset 0 1px 0 0 rgba(255,255,255,.45), 
-                    inset 0 -1px 0 0 rgba(255,255,255,.15), 
-                    0 1px 0 0 rgba(255,255,255,.15);
-        text-shadow: 0 1px var(--cinza1);
-    }
-    
-    .numero:hover {
-        background-color: var(--cinza1);
-    }
+.container{width:min(100%,640px);
+margin:0 auto;
+padding:48px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:24px}
 
-    .operador {
-        border-radius: 3px;
-        font-size: 1.4rem;
-        background-color: var(--azul);
-        border-color: var(--cinza);
-        color: var(--preto);
+header{display:flex;
+flex-direction:column;
+gap:8px;
+width:100%}
+p,h1{margin:0}
+h1{font:700 32px/40px 'Space Grotesk',sans-serif}
+.eyebrow{color:var(--action);
+font-size:12px;
+line-height:18px;
+font-weight:700;
+text-transform:uppercase}
 
-    }
-    .operador:hover {
-        background-color: #4e9ed4;
-    }
+.calculator{width:min(100%,392px);
+padding:24px;
+border:1px solid var(--calculator-border);
+border-radius:20px;
+background:var(--calculator-key);
+display:flex;
+flex-direction:column;
+gap:16px;
+min-width:0}
 
-    .clear {
-        border-radius: 3px;
-        font-size: 2rem;
-        background-color: var(--vermelho);
-        border-color: var(--cinza);
-        color: var(--preto);
-        width: 80px;
-        height: 40px;  
-        margin-bottom: 10px;
-    }
-    
-    .clear:hover {
-        background-color: var(--laranja);
-    }
-    
-    .sinal-igual {
-        background-color: var(--azul);
-        border-color: var(--cinza);
-        color: var(--preto);
-    
-    }
-    
-    .sinal-igual:hover {
-        background-color: #4e9ed4;
-    }
-    
-    .visor{
-        background-color:rgb(255, 255, 255);
-        border-color: var(--cinza);
-        justify-content: left;
-        color: black;
-        font-size: medium;
-        width: 50%;
-        height: 30%;
-        cursor: default;
-        padding: 10px;     
-        padding-left: 40%;  
-        margin: auto;
-        margin-bottom: 10px;
-    }
+.display{width:100%;
+padding:16px;
+background:var(--calculator-display);
+border:1px solid var(--calculator-border);
+border-radius:12px;
+display:flex;
+flex-direction:column;
+gap:8px;
+min-width:0}
+.display:has([aria-invalid=true]){border:2px solid var(--calculator-error);
+padding:15px}
+
+label{font-weight:700;
+font-size:12px;
+line-height:18px}
+#history{min-height:22px;
+text-align:right;
+font-size:14px;
+line-height:22px;
+overflow-wrap:anywhere}
+#result{width:100%;
+min-width:0;
+padding:0;
+border:0;
+background:transparent;
+color:var(--text);
+font:700 40px/48px 'Space Grotesk',sans-serif;
+text-align:right;
+border-radius:2px}
+#result::placeholder{color:var(--text);
+opacity:1}
+#result[aria-invalid=true]{color:var(--calculator-error)}
+
+.keys{display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:8px;
+width:100%}
+button{min-width:0;
+height:56px;
+border:1px solid var(--calculator-border);
+border-radius:8px;
+background:var(--calculator-key);
+color:var(--text);
+font:500 24px/32px 'Space Grotesk',sans-serif;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+touch-action:manipulation}
+button.utility{background:var(--calculator-display)}
+button.operator{background:var(--calculator-operator);
+color:var(--action)}
+button.equal{background:var(--action);
+border-color:var(--action);
+color:#f2f2f2}
+button:hover{filter:brightness(.95)}
+button.equal:hover{background:var(--action-hover);
+filter:none}
+button:active{transform:translateY(1px)}
+:focus-visible{outline:3px solid var(--action);
+outline-offset:3px}
+#feedback,#keyboard-help{font-size:14px;
+line-height:22px}
+.calculator:has([aria-invalid=true]) #feedback{color:var(--calculator-error)}
+
+@media(max-width:599px){.container{padding:24px}
+.calculator{width:100%;
+padding:16px}
+}
+@media(prefers-reduced-motion:reduce){button:active{transform:none}
+}
